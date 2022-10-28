@@ -15,7 +15,7 @@ export default props =>{
     const validationSchema = yup.object({
         name: yup.string().required("O campo nome é obrigatório"),
         email: yup.string().email().required("O campo email é obrigatório"),
-        phone: yup.string().required("O campo telefone é obrigatório").matches(validatePhone, "Celular inválido"),
+        phone: yup.string().required("O campo telefone é obrigatório").matches(validatePhone, "Celular inválido, ex:(99)99999-9999"),
         cpf: yup.string().required("O campo CPF é obrigatório").matches(validateCpf, "Cpf inválido, inserir com pontos e hífen"),
         country: yup.array().min(1, "Deve ser escolhido pelo menos um país"),
         city: yup.array().min(1, "Deve ser escolhido pelo menos uma cidade")
@@ -51,22 +51,22 @@ export default props =>{
                     <h2 className={styles.title}>Dados Pessoais</h2>
                         <div className={styles.formGroup}>
                             <label className={styles.labelGroup}>*Nome: </label>
-                            <input className={styles.inputGroup} type="text" name="name" {...register("name")}/>
+                            <input className={styles.inputGroup} type="text" name="name" {...register("name")} placeholder="Insira seu nome"/>
                             <p className={styles.errorMessage}>{errors.name?.message}</p>
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.labelGroup}>*Email: </label>
-                            <input className={styles.inputGroup} type="text" name="email" {...register("email")}/>
+                            <input className={styles.inputGroup} type="text" name="email" {...register("email")} placeholder="Insira um email válido"/>
                             <p className={styles.errorMessage}>{errors.email?.message}</p>
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.labelGroup}>*Telefone: </label>
-                            <input className={styles.inputGroup} type="text" name="phone" {...register("phone")}/>
+                            <input className={styles.inputGroup} type="text" name="phone" {...register("phone")} placeholder="Insira o seu celular ex:(99)99999-9999"/>
                             <p className={styles.errorMessage}>{errors.phone?.message}</p>
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.labelGroup}>*CPF: </label>
-                            <input className={styles.inputGroup} type="text" name="cpf" {...register("cpf")}/>
+                            <input className={styles.inputGroup} type="text" name="cpf" {...register("cpf")} placeholder="Insira seu CPF ex:000.000.000-00"/>
                             <p className={styles.errorMessage}>{errors.cpf?.message}</p>
                         </div>
                 </div>
