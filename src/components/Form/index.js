@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import {useForm} from "react-hook-form"
 import {yupResolver} from "@hookform/resolvers/yup"
 import * as yup from "yup"
+import { validateCpf, validatePhone } from "../../utils/validations"
 
 export default props =>{
 
@@ -14,8 +15,8 @@ export default props =>{
     const validationSchema = yup.object({
         name: yup.string().required("O campo nome é obrigatório"),
         email: yup.string().email().required("O campo email é obrigatório"),
-        phone: yup.string().required("O campo telefone é obrigatório"),
-        cpf: yup.string().required("O campo CPF é obrigatório"),
+        phone: yup.string().required("O campo telefone é obrigatório").matches(validatePhone, "Celular inválido"),
+        cpf: yup.string().required("O campo CPF é obrigatório").matches(validateCpf, "Cpf inválido, inserir com pontos e hífen"),
         country: yup.array().min(1, "Deve ser escolhido pelo menos um país"),
         city: yup.array().min(1, "Deve ser escolhido pelo menos uma cidade")
     })
@@ -42,7 +43,7 @@ export default props =>{
         getCountries()
         getCities()
     },[])
-    
+
     return(
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.wrapper}>
@@ -50,7 +51,7 @@ export default props =>{
                     <h2 className={styles.title}>Dados Pessoais</h2>
                         <div className={styles.formGroup}>
                             <label className={styles.labelGroup}>*Nome: </label>
-                            <input className={styles.inputGroup} type="text" name="name" {...register("nome")}/>
+                            <input className={styles.inputGroup} type="text" name="name" {...register("name")}/>
                             <p className={styles.errorMessage}>{errors.name?.message}</p>
                         </div>
                         <div className={styles.formGroup}>
@@ -60,7 +61,7 @@ export default props =>{
                         </div>
                         <div className={styles.formGroup}>
                             <label className={styles.labelGroup}>*Telefone: </label>
-                            <input className={styles.inputGroup} type="text" name="phone" {...register("telefone")}/>
+                            <input className={styles.inputGroup} type="text" name="phone" {...register("phone")}/>
                             <p className={styles.errorMessage}>{errors.phone?.message}</p>
                         </div>
                         <div className={styles.formGroup}>
