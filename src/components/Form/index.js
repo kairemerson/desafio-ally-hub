@@ -21,12 +21,19 @@ export default props =>{
         city: yup.array().min(1, "Deve ser escolhido pelo menos uma cidade")
     })
 
-    const {register, handleSubmit, formState: {errors}} = useForm({
-        resolver: yupResolver(validationSchema)
+    const {register, handleSubmit, formState: {errors}, reset} = useForm({
+        resolver: yupResolver(validationSchema),
+        defaultValues: {
+            name: "",
+            email: "",
+            phone: "",
+            cpf: ""
+        }
     })
 
     const onSubmit = (data) =>{
         console.log(data)
+        reset()
     }
 
     const getCountries = () =>{
