@@ -1,0 +1,25 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(245, 239, 239);
+    max-width: 400px;
+    margin: 30px auto;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.5);
+}
+.title{
+    margin: 0;
+}
+.text{
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+.close{
+    width: 30px;
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
