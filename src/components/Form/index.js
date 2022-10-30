@@ -33,7 +33,7 @@ export default props =>{
             cpf: ""
         }
     })
-    const closeInfo = ()=>{
+    const closeInfo = () =>{
         setOpenInfo(false)
     }
 
@@ -64,6 +64,7 @@ export default props =>{
                 <div className={styles.wrapper}>
                     <div className={styles.formWrapper}>
                         <h2 className={styles.title}>Dados Pessoais</h2>
+                        
                             <div className={styles.formGroup}>
                                 <label className={styles.labelGroup}>*Nome: </label>
                                 <input className={styles.inputGroup} type="text" name="name" {...register("name")} placeholder="Insira seu nome"/>
@@ -85,9 +86,11 @@ export default props =>{
                                 <p className={styles.errorMessage}>{errors.cpf?.message}</p>
                             </div>
                     </div>
+
                     <div className={styles.formWrapper}>
                         <h2 className={styles.title}>Destinos de Interesse</h2>
                         <p>Segure ctrl para selecionar mais de uma opção.</p>
+
                             <div className={styles.formGroup}>
                                 <label className={styles.labelGroup}>*País: </label>
                                 <select className={styles.selectGroup} multiple {...register("country")}>
@@ -97,6 +100,7 @@ export default props =>{
                                 </select>
                                 <p className={styles.errorMessage}>{errors.country?.message}</p>
                             </div>
+
                             <div className={styles.formGroup}>
                                 <label className={styles.labelGroup}>*Cidade: </label>
                                 <select className={styles.selectGroup} {...register("city")} multiple>
